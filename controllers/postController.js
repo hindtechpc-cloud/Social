@@ -16,7 +16,6 @@ const uploadToCloudinary = (fileBuffer) => {
     streamifier.createReadStream(fileBuffer).pipe(stream);
   });
 };
-
 exports.createPost = async (req, res) => {
   try {
     const { text } = req.body;
@@ -62,7 +61,7 @@ exports.getFeed = async (req, res) => {
         const limit = parseInt(req.query.limit) || 10;
         const skip = (page - 1) * limit;
 
-        const posts = await Post.find()
+        const posts = await Post.find({})
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit)

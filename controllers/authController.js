@@ -80,6 +80,7 @@ exports.login = async (req, res) => {
 };
 
 exports.getMe = async (req, res) => {
+    console.log(req.user);
   try {
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
